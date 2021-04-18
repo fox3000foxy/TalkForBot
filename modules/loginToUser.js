@@ -1,3 +1,11 @@
+/*
+export interface ICredentials {
+  username: string;
+  password: string;
+}
+*/
+
+/* function loginToUser(params: ICredentials, db) { */
 function loginToUser(params, db) {
     let username = params[0];
     let password = params[1];

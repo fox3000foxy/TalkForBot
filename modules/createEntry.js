@@ -1,16 +1,16 @@
-function setUsername(Entry,username) {
-  Entry.username = username
-  return Entry
+function setUsername(entry, username) {
+  entry.username = username;
+  return entry;
 }
 
-function setPassword(Entry,password) {
-  Entry.password = password
-  return Entry
+function setPassword(entry, password) {
+  entry.password = password;
+  return entry;
 }
 
-function setAvatarURL(Entry,avatarURL) {
-  Entry.avatarURL = avatarURL
-  return Entry
+function setAvatarURL(entry, avatarURL) {
+  entry.avatarURL = avatarURL;
+  return entry;
 }
 
 exports.setUsername = setUsername
