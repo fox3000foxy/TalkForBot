@@ -1,0 +1,13 @@
+```
+Creation:
+    • bc!pseudo <username> for set the username to your bot
+    • bc!mdp <password> for secure your bot
+    • bc!avatar <avatarURL> for set the avatar image of your bot
+    • bc!finish for finish the creation of your bot
+Connexion:
+    • bc!login <username> <password> 
+    • bc!<message> for say as your bot
+    • bc!disc for disconnect your bot
+Misc:
+    • bc!help
+```

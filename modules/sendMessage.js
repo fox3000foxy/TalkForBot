@@ -1,21 +1,12 @@
-async function sendMessage(message) {
-    const channel = message.channel;
+async function sendMessage(EntryTest, channel, request) {
     try {
         const webhooks = await channel.fetchWebhooks();
         const webhook = webhooks.first();
-        if (message.mentions) {
-            let user = message.mentions.users.first()
-            if (!message.author.bot && message.mentions.users.first().bot) {
-                await webhook.send(message.content.split(">")[1], {
-                    username: user.username,
-                    avatarURL: client.users.cache.get(user.id).avatarURL(),
-                });
-                await message.delete()
-            }
-        }
-    } catch (error) {
-        console.error('Error trying to send: ', error);
-    }
+        await webhook.send(request, {
+            username: EntryTest.username,
+            avatarURL: EntryTest.avatarURL,
+        });
+    } catch (error) { console.error('Error trying to send: ', error); }
 }
 
 exports.sendMessage = sendMessage
