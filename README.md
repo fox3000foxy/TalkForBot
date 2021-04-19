@@ -28,7 +28,7 @@ For disconnect, type `bc!dsc`
 For send message, type `bc!<msg>`. For example, to obtain this result :<br>
 
 ![Example](https://cdn.discordapp.com/attachments/833611556411277362/833614678470819870/unknown.png)
-type `bc!Hello friends !<br>
+type `bc!Hello friends !\n
 How are you today ?`
 
 ### Bot doesn't work ?
