@@ -105,5 +105,6 @@ client.on('message', async (message) => {
     }
 });
 
+//CHANGE TOKEN TO YOUR BOT
 client.login("ODI5MzQ5Nzc4NTA4MjE4Mzc5.YG22Kw." + "G9FnMiRBm8Av13hPpvB_xUPbzyA")
 //Demo URL avatar : "https://preview.redd.it/08zhghwhnb731.png?auto=webp&s=19332b877d35dd954827a34e8d5318d0600aec8f"
