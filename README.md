@@ -37,3 +37,5 @@ How are you today ?
 ### Bot doesn't work ?
 Don't forget to setup a *webhook* with `⚙️ > Integrations > Webhooks > Create webhook`
 ![Create the webhook](https://discordjs.guide/assets/img/creating-webhooks-1.6ad23b58.png)
+
+Vous préférez le français ? Rendez vous sur le [README-fr](./README-fr.md)
