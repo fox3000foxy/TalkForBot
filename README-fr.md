@@ -16,15 +16,15 @@ Misc:
 ```
 
 ### Étape 1:
-Créez votre bot en lui donnant nom, et avatar !
-• Pour donner le nom "YourBot" à votre bot, tapez `bc!un YourBot`
-• Pour définir le mot de passe "DiscordIsGenius" de votre bot, tapez `bc!pwd DiscordIsGenius`
-• Enfin pour définir l'avatar, donc l'image de profil de votre bot, tapez par example `bc!avatar https://uneviededev.fr/wp-content/uploads/2020/03/discord-1.png`
+Créez votre bot en lui donnant nom, et avatar !<br>
+• Pour donner le nom "YourBot" à votre bot, tapez `bc!un YourBot`<br>
+• Pour définir le mot de passe "DiscordIsGenius" de votre bot, tapez `bc!pwd DiscordIsGenius`<br>
+• Enfin pour définir l'avatar, donc l'image de profil de votre bot, tapez par example `bc!avatar https://uneviededev.fr/wp-content/uploads/2020/03/discord-1.png`<br>
 • Pour valider la création de votre bot, tapez "bc!finish"
 
 ### Étape 2:
-Pour se connecter au bot, tapez `bc!log <un> <pwd>`; ici `bc!log YourBot DiscordIsGenius`
-Pour se déconnecter, tapez `bc!dsc`
+Pour se connecter au bot, tapez `bc!log <un> <pwd>`; ici `bc!log YourBot DiscordIsGenius`<br>
+Pour se déconnecter, tapez `bc!dsc`<br>
 Pour envoyer un message, tapez `bc!<msg>`. Par example, pour obtenir le message suivant :<br>
 
 ![Example](https://cdn.discordapp.com/attachments/833611556411277362/833614678470819870/unknown.png)
