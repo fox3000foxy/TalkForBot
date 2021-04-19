@@ -26,11 +26,15 @@ const MSG_CONTENT = `\`\`\`Creation:
     • ${ESCAPE_TOKEN}${FINISH_TOKEN} for finish the creation of your bot
 Connexion:
     • ${ESCAPE_TOKEN}${LOGGING_TOKEN} <username> <password> 
-    • ${ESCAPE_TOKEN}<message> for say as your bot
+    • ${ESCAPE_TOKEN}<msg> for say as your bot
     • ${ESCAPE_TOKEN}${DISCONNECT_TOKEN} for disconnect your bot
 Misc:
     • ${ESCAPE_TOKEN}${HELP_TOKEN}
-\`\`\``
+
+\`\`\`
+:flag_us: More information on \`https://github.com/fox3000foxy/TalkForBot/blob/master/README.md\`
+:flag_fr: Plus d'information sur \`https://github.com/fox3000foxy/TalkForBot/blob/master/README-fr.md\`
+`
 
 client.on('ready', () => {
     console.log("Ready !")
