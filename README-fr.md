@@ -28,8 +28,11 @@ Pour se déconnecter, tapez `bc!dsc`
 Pour envoyer un message, tapez `bc!<msg>`. Par example, pour obtenir le message suivant :<br>
 
 ![Example](https://cdn.discordapp.com/attachments/833611556411277362/833614678470819870/unknown.png)
-tapez `bc!Hello friends !<br>
-How are you today ?`
+tapez
+```txt
+bc!Hello friends !
+How are you today ?
+```
 
 ### Le bot ne marche pas ?
 N'oubliez pas de paramétrer un *webhook* grâce à `⚙️ > Intégrations > Webhooks > Créer un webhook`
