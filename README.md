@@ -1,7 +1,7 @@
 # TalkForBot
 
 ### bc!help
-```txt
+```html
 Creation:
     • bc!un <username> for set the username to your bot
     • bc!pwd <password> for secure your bot

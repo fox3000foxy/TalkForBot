@@ -22,7 +22,8 @@ const WEBHOOK_TOKEN = 'wh';
 
 //HELP MESSAGE
 const MSG_CONTENT = `
-\`\`\`Creation:
+\`\`\`html
+Creation:
     • ${ESCAPE_TOKEN}${USERNAME_TOKEN} <username> for set the username to your bot
     • ${ESCAPE_TOKEN}${PASSWORD_TOKEN} <password> for secure your bot
     • ${ESCAPE_TOKEN}${AVATAR_TOKEN} <avatarURL> for set the avatar image of your bot
