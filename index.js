@@ -18,6 +18,7 @@ const FINISH_TOKEN = 'finish';
 const LOGGING_TOKEN = 'log' || 'logging';
 const DISCONNECT_TOKEN = 'dsc' || 'disconnexion';
 const HELP_TOKEN = 'help';
+const WEBHOOK_TOKEN = 'wh';
 
 //HELP MESSAGE
 const MSG_CONTENT = `
@@ -25,15 +26,15 @@ const MSG_CONTENT = `
     • ${ESCAPE_TOKEN}${USERNAME_TOKEN} <username> for set the username to your bot
     • ${ESCAPE_TOKEN}${PASSWORD_TOKEN} <password> for secure your bot
     • ${ESCAPE_TOKEN}${AVATAR_TOKEN} <avatarURL> for set the avatar image of your bot
-    • ${ESCAPE_TOKEN}${COMPLETE_FORM_TOKEN} <username> <password> <avatarURL> for complete-in-one for the creation of bots
+    • ${ESCAPE_TOKEN}${COMPLETE_FORM_TOKEN} <username> <password> <avatarURL> for complete-in-one the creation of bots
     • ${ESCAPE_TOKEN}${FINISH_TOKEN} for finish the creation of your bot
 Connexion:
     • ${ESCAPE_TOKEN}${LOGGING_TOKEN} <username> <password> 
     • ${ESCAPE_TOKEN}<msg> for say as your bot
     • ${ESCAPE_TOKEN}${DISCONNECT_TOKEN} for disconnect your bot
 Misc:
-    • ${ESCAPE_TOKEN}${HELP_TOKEN}
-
+    • ${ESCAPE_TOKEN}${HELP_TOKEN} for this display help window
+    • ${ESCAPE_TOKEN}${WEBHOOK_TOKEN} for set up the webhook, needed for send message as bot
 \`\`\`
 :flag_us: More information on \`https://github.com/fox3000foxy/TalkForBot/blob/master/README.md\`
 :flag_fr: Plus d'information sur \`https://github.com/fox3000foxy/TalkForBot/blob/master/README-fr.md\`
@@ -96,6 +97,11 @@ client.on('message', async (message) => {
     }
     else if (request.startsWith(DISCONNECT_TOKEN)) {
         Login[authId] = {};
+    }
+    else if (request.startsWith(WEBHOOK_TOKEN)) {
+        message.channel.createWebhook('Simple Webhook', {
+            avatar: 'https://i.imgur.com/wSTFkRM.png',
+        });
     }
     else if (Login[authId] && JSON.stringify(Login[authId]) != "{}") {
         sendMessage(Login[authId], message.channel, request);

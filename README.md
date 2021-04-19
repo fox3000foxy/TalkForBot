@@ -6,14 +6,14 @@ Creation:
     • bc!un <username> for set the username to your bot
     • bc!pwd <password> for secure your bot
     • bc!avatar <avatarURL> for set the avatar image of your bot
+    • bc!all <username> <password> <avatarURL> for complete-in-one the creation of bots
     • bc!finish for finish the creation of your bot
-    • bc!all <username> <password> <avatarURL> for complete-in-one for the creation of bots
 Connexion:
     • bc!log <username> <password> 
     • bc!<msg> for say as your bot
     • bc!dsc for disconnect your bot
 Misc:
-    • bc!help
+    • bc!help for this display help window
     • bc!wh for set up the webhook, needed for send message as bot
 ```
 
