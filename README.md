@@ -25,7 +25,7 @@ Create your bot by giving it name and avatar!
 You can so use `bc!all YourBot DiscordIsGenius https://unviededev.fr/wp-content/uploads/2020/03/discord-1.png`<br>
 • To validate the creation of your bot, type "bc!finish"<br>
 
-### Étape 2:
+### Step 2:
 For connect to your bot, type `bc!log <un> <pwd>`; here `bc!log YourBot DiscordIsGenius`<br>
 For disconnect, type `bc!dsc`<br>
 For send message, type `bc!<msg>`. For example, to obtain this result :<br>
