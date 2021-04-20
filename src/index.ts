@@ -42,8 +42,8 @@ Misc:
     • ${ESCAPE_TOKEN}${HELP_TOKEN} for this display help window
     • ${ESCAPE_TOKEN}${WEBHOOK_TOKEN} for set up the webhook, needed for send message as bot
 \`\`\`
-:flag_us: More information on \`https://github.com/fox3000foxy/TalkForBot/blob/master/README.md\`
-:flag_fr: Plus d'information sur \`https://github.com/fox3000foxy/TalkForBot/blob/master/README-fr.md\`
+:flag_us: More information on \`https://github.com/fox3000foxy/TalkForBot/blob/feature/typescript/README.md\`
+:flag_fr: Plus d'information sur \`https://github.com/fox3000foxy/TalkForBot/blob/feature/typescript/README-fr.md\`
 `
 
 client.on('ready', () => {
