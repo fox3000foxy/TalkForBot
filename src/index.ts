@@ -14,7 +14,7 @@ let entryTest = new Array<IEntry>();
 let login = new Array<ICredentials>();
 
 //ESCAPE TOKENS
-const ESCAPE_TOKEN = 'bc!';
+const ESCAPE_TOKEN = '!tfb ';
 const USERNAME_TOKEN = 'un' || 'username';
 const PASSWORD_TOKEN = 'pwd' || 'password';
 const AVATAR_TOKEN = 'avatar' || 'avatarURL';
