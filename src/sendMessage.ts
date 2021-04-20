@@ -1,4 +1,7 @@
-async function sendMessage(entryTest, channel, request) {
+import { TextChannel } from 'discord.js';
+import { IEntry } from './models/entry';
+
+export async function sendMessage(entryTest: IEntry, channel: TextChannel, request: string) {
     try {
         const webhooks = await channel.fetchWebhooks();
         const webhook = webhooks.first();
@@ -12,5 +15,3 @@ async function sendMessage(entryTest, channel, request) {
       console.error('Error trying to send: ', error); 
     }
 }
-
-exports.sendMessage = sendMessage

@@ -1,12 +1,17 @@
-//console.clear()
-const Discord = require('discord.js'),
-    fs = require('fs'),
-    client = new Discord.Client();
-let { setUsername, setPassword, setAvatarURL } = require('./modules/createEntry'),
-    { sendMessage } = require('./modules/sendMessage'),
-    { loginToUser } = require('./modules/loginToUser'),
-    EntryTest = new Array(),
-    Login = new Array();
+
+
+// TODO : tester le nombre de params pour chaque commande. Si nb incorrect, afficher help
+import { Client, Message, TextChannel } from 'discord.js';
+import * as fs from 'fs';
+import { ICredentials } from './models/credentials';
+import { IEntry } from './models/entry';
+let client: Client = new Client();
+
+import { sendMessage } from './sendMessage';
+import { loginToUser } from './loginToUser';
+
+let entryTest = new Array<IEntry>();
+let login = new Array<ICredentials>();
 
 //ESCAPE TOKENS
 const ESCAPE_TOKEN = 'bc!';
@@ -46,46 +51,49 @@ client.on('ready', () => {
     client.user.setActivity(`${ESCAPE_TOKEN}${HELP_TOKEN}`, { type: 'WATCHING' });
 })
 
-client.on('message', async (message) => {
+client.on('message', async (message: Message) => {
     let authId = message.author.id;
     if (!message.content.startsWith(`${ESCAPE_TOKEN}`) || message.author.bot) {
         return;
     }
     message.delete();
     let request = message.content.split(`${ESCAPE_TOKEN}`)[1];
-    EntryTest[authId] = EntryTest[authId] || {};
+    entryTest[authId] = entryTest[authId] || {};
     console.log("request : ", { request });
 
     if (request.startsWith(USERNAME_TOKEN)) {
-        EntryTest[authId] = setUsername(EntryTest[authId], request.split(" ")[1]);
+        entryTest[authId].username = request.split(" ")[1];
     }
     else if (request.startsWith(PASSWORD_TOKEN)) {
-        EntryTest[authId] = setPassword(EntryTest[authId], request.split(" ")[1]);
+        entryTest[authId].password = request.split(" ")[1];
     }
     else if (request.startsWith(AVATAR_TOKEN)) {
-        EntryTest[authId] = setAvatarURL(EntryTest[authId], request.split(" ")[1]);
+        entryTest[authId].avatarURL = request.split(" ")[1];
     }
     else if (request.startsWith(COMPLETE_FORM_TOKEN)) {
-        EntryTest[authId] = setUsername(EntryTest[authId], request.split(" ")[1]);
-        EntryTest[authId] = setPassword(EntryTest[authId], request.split(" ")[2]);
-        EntryTest[authId] = setAvatarURL(EntryTest[authId], request.split(" ")[3]);
+        // TODO : tester le nombre de params
+        entryTest[authId] = {
+            username: request.split(" ")[1],
+            password: request.split(" ")[2],
+            avatarURL: request.split(" ")[3],
+        }
     }
     else if (request.startsWith(FINISH_TOKEN)) {
-        if (EntryTest[authId].username && EntryTest[authId].password && EntryTest[authId].avatarURL) {
-            let data = fs.readFileSync('./data/db.json', 'utf8');
-            let dataJson = JSON.parse(data);
-            dataJson.push(EntryTest[authId]);
+        let data = fs.readFileSync('./data/db.json', 'utf8');
+        let dataJson = JSON.parse(data);
+        if (entryTest[authId].username && entryTest[authId].password && entryTest[authId].avatarURL) {
+            dataJson.push(entryTest[authId]);
             fs.writeFile('./data/db.json', JSON.stringify(dataJson), (err) => { });
+            let credentials: ICredentials = {
+                username: entryTest[authId].username,
+                password: entryTest[authId].password
+            }
+            login[authId] = loginToUser(credentials, dataJson);
+            if (login[authId] === undefined) message.channel.send("Error when try to login !");
         }
         else {
             message.channel.send("User profile not completed");
         }
-        /*      let data = fs.readFileSync('./data/db.json', 'utf8');
-                let dataJson = JSON.parse(data);
-                console.log(data)
-                Login[authId] = loginToUser([EntryTest[authId].username,EntryTest[authId].password], dataJson);
-                if (JSON.stringify(Login[authId]) == "{}") message.channel.send("Wrong username or password !");
-         */
     }
     else if (request.startsWith(HELP_TOKEN)) {
         message.channel.send(MSG_CONTENT);
@@ -93,19 +101,28 @@ client.on('message', async (message) => {
     else if (request.startsWith(LOGGING_TOKEN)) {
         let data = fs.readFileSync('./data/db.json', 'utf8');
         let dataJson = JSON.parse(data);
-        Login[authId] = loginToUser(request.split(`${LOGGING_TOKEN} `)[1].split(" "), dataJson);
-        if (JSON.stringify(Login[authId]) == "{}") message.channel.send("Wrong username or password !");
+        let credentials: ICredentials = {
+            username: request.split(`${LOGGING_TOKEN} `)[1].split(" ")[0],
+            password: request.split(`${LOGGING_TOKEN} `)[1].split(" ")[1],
+        }
+        login[authId] = loginToUser(credentials, dataJson);
+        console.log(login[authId])
+        if (login[authId] === undefined) message.channel.send("Wrong username or password !");
     }
     else if (request.startsWith(DISCONNECT_TOKEN)) {
-        Login[authId] = {};
+        login[authId] = undefined;
     }
     else if (request.startsWith(WEBHOOK_TOKEN)) {
-        message.channel.createWebhook('Simple Webhook', {
-            avatar: 'https://i.imgur.com/wSTFkRM.png',
-        });
+        if (message.channel instanceof TextChannel) {
+            message.channel.createWebhook('Simple Webhook', {
+                avatar: 'https://i.imgur.com/wSTFkRM.png',
+            });
+        }
     }
-    else if (Login[authId] && JSON.stringify(Login[authId]) != "{}") {
-        sendMessage(Login[authId], message.channel, request);
+    else if (login[authId]) {
+        if (message.channel instanceof TextChannel) {
+            sendMessage(login[authId], message.channel, request);
+        }
     }
     else {
         message.channel.send("Not logged to any user");
